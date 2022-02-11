@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var username = prompt("Please enter your name")
+      var socket = io();
+      navigator.getBattery().then((battery)=>{
+        var today = new Date();
+        socket.emit("userinfo", {useros: navigator.appVersion, userbattery: (battery.level)*100, username: username, datentime: today})
+      })
+
+    </script>
+    <h4>Your battery levels and your operating system info has been send to the database and stored sucessfully now you can close this tab. Thank you : )</h4>
+</body>
+</html>
